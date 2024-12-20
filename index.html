@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Thrones Fact Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #495057;
+            margin: 15px 0;
+            opacity: 0; /* Start hidden */
+            transition: opacity 0.5s ease; /* Fade-in effect */
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game of Thrones Fact Generator</h1>
+        <p id="fact">Click the button to generate a fact!</p>
+        <button id="generate-button">Generate Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "The Iron Throne was made from the swords of Aegon the Conqueror's enemies.",
+            "There are 7 kingdoms in Westeros, but there are actually 9 regions.",
+            "The direwolf is the sigil of House Stark.",
+            "The phrase 'Winter is Coming' is the motto of House Stark.",
+            "Daenerys Targaryen is known as the Mother of Dragons.",
+            "The show was based on the book series 'A Song of Ice and Fire' by George R.R. Martin.",
+            "The character of Tyrion Lannister was inspired by George R.R. Martin's own experiences.",
+            "The show has won over 160 Emmy Awards.",
+            "The dragons in the show were created using CGI, but the actors had to act as if they were real.",
+            "The final season was met with mixed reviews from fans and critics alike."
+        ];
+
+        function generateRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factElement = document.getElementById('fact');
+            factElement.style.opacity = 0; // Start fade-out
+
+            setTimeout(() => {
+                factElement.innerText = facts[randomIndex]; // Change the fact
+                factElement.style.opacity = 1; // Fade-in
+            }, 500); // Wait for fade-out to complete
+        }
+
+        document.getElementById('generate-button').addEventListener('click', generateRandomFact);
+    </script>
+</body>
+</html>
